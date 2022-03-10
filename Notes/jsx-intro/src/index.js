@@ -23,13 +23,35 @@ import ReactDOM from "react-dom";
 // Get a reference to the HTML "root" element
 const root = document.querySelector("#root");
 
-// Note: we can also use JS variables in our JSX
+// ? Note: we can also use JS variables in our JSX
 // By putting the variable between curly braces { }
-let endOfSentence = "world!!";
+// let endOfSentence = "world!!";
 
-// Create some JSX and assign it to a variable
-let jsxDiv = (
-	<div>Hello {endOfSentence}</div>
+// ? Create some JSX and assign it to a variable
+// let jsxDiv = (
+// 	<div>Hello {endOfSentence}</div>
+// );
+
+// * JSX Extras:
+// 1. We can reference object properties inside JSX elements inside curly braces { }
+// 2. We must use "className" when giving JSX elements a class, NOT "class"
+// 3. It is possible to use inline styles for JSX elements - HOWEVER:
+//	  A. We have to use an OBJECT to contain the styles we want
+//    B. This object lives inside a pair of curly braces --> { { border: "2px solid" }  }
+//    C. For properties like "background color", we have to use camel case in JSX: "backgroundColor" NOT "background-color".
+
+const person = {
+	firstName: "David",
+	age: 24,
+	location: "Göttingen"
+}
+
+const output = (
+	<div className="container" style={ { border: "2px solid", color: "red", backgroundColor: "yellow" } }>
+		<h1 className="firstName">The person's first name is { person.firstName }</h1>
+		<h2 className="age">The person's age is { person.age }</h2>
+		<h3 className="location">The person's location is { person.location }</h3>
+	</div>
 );
 
 // ReactDOM.render() is the "gateway" from index.js to index.html
@@ -37,5 +59,5 @@ let jsxDiv = (
 // * 1. What JSX we want to render in HTML
 // * 2. Where we want to render it
 //              what    where
-ReactDOM.render(jsxDiv, root);
+ReactDOM.render(output, root);
 // ReactDOM.render(jsxDiv, document.querySelector("#root"));
